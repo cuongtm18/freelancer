@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <div class="banner">
+        <div class="site-name">HỆ THỐNG QUẢN LÝ CHUNG CƯ</div>
+    </div>
+
+    <h:form id="frmTopmenu">
+        <nav class="form-group navbarMaster navbar-default navbar-fixed-top col-sm-12 col-md-12">
+            <p:menubar orientation="vertical"
+                       styleClass="col-sm-10 col-md-10 menu-bar" style="padding:0;"
+                       model="#{masterController.mainMenuModel}">
+            </p:menubar>
+
+            <div class="top-menu-element col-sm-2 col-md-2"
+                 style="text-align: right; color: white;float: right;width: 16%;">
+                <div class="col-sm-10 col-md-10">
+                    <h:outputLabel rendered="#{loginController.getFullName() != null}"
+                                   value="#{loginController.getFullName()} - #{loginController.getRoleType()}"
+                                   styleClass="topbar-label">
+                    </h:outputLabel>
+                </div>
+                <div class="col-sm-2 col-md-2" style="text-align: right;float: right">
+                    <p:commandButton icon="fa fa-sign-out"
+                                     styleClass="top-menu-btn col-sm-3 col-md-3"
+                                     actionListener="#{loginController.doLogout()}" title="Thoát">
+                    </p:commandButton>
+                </div>
+            </div>
+        </nav>
+    </h:form>
+</ui:composition>

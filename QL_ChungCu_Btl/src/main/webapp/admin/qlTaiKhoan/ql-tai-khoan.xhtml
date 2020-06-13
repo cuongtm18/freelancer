@@ -1,0 +1,199 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="/templates/master.xhtml">
+
+    <ui:define name="main">
+
+        <h:form id="frmMain">
+            <h1 style="color: #3d5640">
+                <i class="fa fa-fw fa-users"/> QUẢN LÝ TÀI KHOẢN
+            </h1>
+
+            <p:panel styleClass="card" toggleable="true">
+                <p:outputPanel id="frmSearch" styleClass="col-sm-12 col-md-12"
+                               class="form-horizontal">
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Họ và tên:"/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:inputText styleClass="form-control" value="#{qlTaiKhoanController.taiKhoanEntity.fullName}"
+                                         maxlength="50">
+                            </p:inputText>
+                        </div>
+
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Tên tài khoản:"/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:inputText styleClass="form-control" value="#{qlTaiKhoanController.taiKhoanEntity.userName}"
+                                         maxlength="20">
+                            </p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Vai trò : "/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:selectOneRadio columns="3" layout="responsive"
+                                              value="#{qlTaiKhoanController.taiKhoanEntity.role}">
+                                <f:selectItem itemLabel="SuperAdmin" itemValue="1"></f:selectItem>
+                                <f:selectItem itemLabel="Admin" itemValue="2"></f:selectItem>
+                                <f:selectItem itemLabel="User" itemValue="3"></f:selectItem>
+                            </p:selectOneRadio>
+                        </div>
+
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Trạng thái : "/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:selectOneMenu styleClass="form-control"
+                                             value="#{qlTaiKhoanController.taiKhoanEntity.status}">
+                                <f:selectItem itemLabel="--Chọn--"></f:selectItem>
+                                <f:selectItem itemLabel="Đang hoạt động" itemValue="1"/>
+                                <f:selectItem itemLabel="Ngừng hoạt động" itemValue="0"/>
+                            </p:selectOneMenu>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Email:"/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:inputText styleClass="form-control" value="#{qlTaiKhoanController.taiKhoanEntity.email}"
+                                         maxlength="50" placeholder="example@gmail.com">
+                            </p:inputText>
+                        </div>
+
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Số điện thoại : "/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:inputText styleClass="form-control"
+                                         onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"
+                                         value="#{qlTaiKhoanController.taiKhoanEntity.phone}" maxlength="15">
+                            </p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="EmptyBox5"/>
+
+                    <div class="form-horizontal" style="text-align: right">
+                        <div class="text-bottom">
+                            <p:commandButton value="#{msg['common.button.label.search']}"
+                                             icon="ui-icon-search" id="btnTimkiem"
+                                             actionListener="#{qlTaiKhoanController.onSearch()}"
+                                             update="frmMain:tblNhanVien">
+                            </p:commandButton>
+                            <p:commandButton value="#{msg['common.button.label.reset']}"
+                                             icon="fa fa-refresh" id="reset"
+                                             actionListener="#{qlTaiKhoanController.resetDialogForm()}"
+                                             update="frmSearch">
+                            </p:commandButton>
+                        </div>
+                    </div>
+                </p:outputPanel>
+            </p:panel>
+            <p:panel id="toggleable" header="Danh sách tài khoản"
+                     styleClass="card">
+                <p:outputPanel>
+                    <div class="form-horizontal" style="text-align: center">
+                        <div class="text-center">
+
+                            <p:commandButton id="btnAdd"
+                                             value="#{msg['common.button.label.add']}" icon="fa fa-plus"
+                                             actionListener="#{qlTaiKhoanController.prepareInsert()}"
+                                             oncomplete="PF('dlgAddEdit').show();" update="dlgAddEdit"
+                                             resetValues="true">
+                            </p:commandButton>
+
+                        </div>
+                    </div>
+                    <div class="EmptyBox10"/>
+                    <p:dataTable id="tblNhanVien" paginator="true" rows="10"
+                                 value="#{qlTaiKhoanController.list}" var="taiKhoan" scrollable="true"
+                                 paginatorPosition="bottom" rowsPerPageTemplate="5,10,20"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 emptyMessage="#{msg['datatable.label.notfound']}">
+                        <f:facet name="header">
+                            <p:outputPanel style="text-align: left;">
+                                <h:outputText
+                                        value="Tổng số bản ghi : #{qlTaiKhoanController.list.size()}"></h:outputText>
+                            </p:outputPanel>
+                        </f:facet>
+
+                        <p:column width="130" style="text-align:center"
+                                  headerText="#{msg['common.table.col-header.action']}">
+                            <p:commandButton id="update"
+                                             value="#{msg['common.dialog.header.prefixUpdate']}"
+                                             style="text-align:center;" icon="fa fa-fw fa-edit"
+                                             oncomplete="PF('dlgAddEdit').show();"
+                                             actionListener="#{qlTaiKhoanController.findById(taiKhoan.id)}"
+                                             update="dlgAddEdit">
+                            </p:commandButton>
+
+                            <p:commandButton id="delete"
+                                             rendered="#{!qlTaiKhoanController.checkCurentUser(taiKhoan.userName)}"
+                                             value="#{msg['common.button.label.delete']}"
+                                             icon="fa fa-fw fa-trash" style="text-align:center;"
+                                             actionListener="#{qlTaiKhoanController.onDelete(taiKhoan)}"
+                                             update="frmMain:tblNhanVien">
+
+                                <p:confirm header="Xóa"
+                                           message="#{msg['common.confirmDialog.message']}"
+                                           icon="ui-icon-alert">
+                                </p:confirm>
+                            </p:commandButton>
+
+                            <p:confirmDialog global="true" widgetVar="confirmdlg">
+                                <p:commandButton value="#{msg['common.confirmDialog.yes']}"
+                                                 styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+                                                 update="frmMain">
+                                </p:commandButton>
+
+                                <p:commandButton value="#{msg['common.confirmDialog.no']}"
+                                                 styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+                                                 onclick="PF('confirmdlg').hide();" type="button">
+                                </p:commandButton>
+                            </p:confirmDialog>
+
+                        </p:column>
+
+                        <p:column width="200" headerText="Họ và Tên">
+                            <h:outputText value="#{taiKhoan.fullName}"></h:outputText>
+                        </p:column>
+
+                        <p:column width="150" style="text-align:left" headerText="Vai trò">
+                            <h:outputText value="SuperAdmin" rendered="#{taiKhoan.role == 1}"/>
+                            <h:outputText value="Admin" rendered="#{taiKhoan.role == 2}"/>
+                            <h:outputText value="User" rendered="#{taiKhoan.role == 3}"/>
+                        </p:column>
+
+                        <p:column width="250" headerText="Tên tài khoản">
+                            <h:outputText value="#{taiKhoan.userName}"></h:outputText>
+                        </p:column>
+
+                        <p:column width="250" headerText="Email">
+                            <h:outputText value="#{taiKhoan.email}"></h:outputText>
+                        </p:column>
+
+                        <p:column width="100" headerText="Số điện thoại">
+                            <h:outputText value="#{taiKhoan.phone}"></h:outputText>
+                        </p:column>
+
+                        <p:column width="150" headerText="Trạng thái">
+                            <h:outputText rendered="#{taiKhoan.status == 1}"
+                                          value="Đang hoạt động"/>
+                            <h:outputText rendered="#{taiKhoan.status == 0}"
+                                          value="Ngừng hoạt động"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </p:outputPanel>
+            </p:panel>
+            <br/>
+            <br/>
+        </h:form>
+        <ui:include src="/admin/qlTaiKhoan/add-edit-tai-khoan-dialog.xhtml"></ui:include>
+    </ui:define>
+</ui:composition>
