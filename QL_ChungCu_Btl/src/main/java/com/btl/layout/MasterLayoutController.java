@@ -62,19 +62,19 @@ public class MasterLayoutController implements Serializable {
         Integer role = (Integer) httpSession.getAttribute("loai");
         addMenu(mainMenuModel, Constants.HOME, "/adminIndex.xhtml", "fa fa-fw fa-home");
         if (role != null && role == 1) {
-            addMenu(mainMenuModel, Constants.QL_TK, "/admin/qlTaiKhoan/ql-tai-khoan.xhtml", null);
-            addMenu(mainMenuModel, Constants.BAN_QL_NV, "/admin/qlBanQlNhanVien/ql-ban-ql-nv.xhtml", null);
-            addMenu(mainMenuModel, Constants.QL_TOA_NHA, "/admin/qlToaNha/ql-toa-nha.xhtml", null);
-            addMenu(mainMenuModel, Constants.QL_CAN_HO, "/admin/qlCanHo/ql-can-ho.xhtml", null);
-            addMenu(mainMenuModel, Constants.TINHTRANG_SDCH, "/admin/qlTinhTrangSdch/ql-tinh-trang-sdch.xhtml", null);
-            addMenu(mainMenuModel, Constants.QL_HOP_DONG, "/admin/qlHopDong/ql-hop-dong.xhtml", null);
-            addMenu(mainMenuModel, Constants.QL_HOA_DON, "/admin/qlHoaDon/ql-hoa-don.xhtml", null);
-            addMenu(mainMenuModel, Constants.QL_KHACH_HANG, "/admin/qlKhachHang/ql-khach-hang.xhtml", null);
-            addMenu(mainMenuModel, Constants.THEODOI_CONGNO_KHACH_HANG, "/admin/qlTheoDoiCnkh/ql-theo-doi-cong-no.xhtml", null);
+            addMenu(mainMenuModel, Constants.QL_TK, "/admin/qlTaiKhoan/ql-tai-khoan.xhtml", "fa fa-address-book-o");
+            addMenu(mainMenuModel, Constants.BAN_QL_NV, "/admin/qlBanQlNhanVien/ql-ban-ql-nv.xhtml", "fa fa-id-badge");
+            addMenu(mainMenuModel, Constants.QL_TOA_NHA, "/admin/qlToaNha/ql-toa-nha.xhtml", "fa fa-university");
+            addMenu(mainMenuModel, Constants.QL_CAN_HO, "/admin/qlCanHo/ql-can-ho.xhtml", "fa fa-archive");
+            addMenu(mainMenuModel, Constants.TINHTRANG_SDCH, "/admin/qlTinhTrangSdch/ql-tinh-trang-sdch.xhtml", "fa fa-building-o");
+            addMenu(mainMenuModel, Constants.QL_HOP_DONG, "/admin/qlHopDong/ql-hop-dong.xhtml", "fa fa-file-archive-o");
+            addMenu(mainMenuModel, Constants.QL_HOA_DON, "/admin/qlHoaDon/ql-hoa-don.xhtml", "fa fa-money");
+            addMenu(mainMenuModel, Constants.QL_KHACH_HANG, "/admin/qlKhachHang/ql-khach-hang.xhtml", "fa fa-user-circle-o");
+            addMenu(mainMenuModel, Constants.THEODOI_CONGNO_KHACH_HANG, "/admin/qlTheoDoiCnkh/ql-theo-doi-cong-no.xhtml", "fa fa-newspaper-o");
         } else if (role != null && role == 2) {
-            addMenu(mainMenuModel, Constants.QL_TOA_NHA, "/admin/qlToaNha/ql-toa-nha.xhtml", null);
-            addMenu(mainMenuModel, Constants.QL_CAN_HO, "/admin/qlCanHo/ql-can-ho.xhtml", null);
-            addMenu(mainMenuModel, Constants.QL_HOP_DONG, "/admin/qlHopDong/ql-hop-dong.xhtml", null);
+            addMenu(mainMenuModel, Constants.QL_TOA_NHA, "/admin/qlToaNha/ql-toa-nha.xhtml", "fa fa-university");
+            addMenu(mainMenuModel, Constants.QL_CAN_HO, "/admin/qlCanHo/ql-can-ho.xhtml", "fa fa-archive");
+            addMenu(mainMenuModel, Constants.QL_HOP_DONG, "/admin/qlHopDong/ql-hop-dong.xhtml", "fa fa-file-archive-o");
         } else if (role != null && role == 3) {
             mainMenuModel = new DynamicMenuModel();
         } else {

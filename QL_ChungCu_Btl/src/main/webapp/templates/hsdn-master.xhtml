@@ -11,9 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title><ui:insert name="title"></ui:insert>HỆ THỐNG QUẢN LÝ CHUNG CƯ</title>
     <ui:insert name="head"></ui:insert>
-    <style>
-    </style>
-<!--    <link rel="shortcut icon" href="#{request.contextPath}/resources/img/icon.ico"/>-->
 </h:head>
 <h:body styleClass="main-body">
 
@@ -23,22 +20,22 @@
 
             </ui:include>
         </nav>
+        <aside class="sidebar">
+            <ui:include src="./sidebar.xhtml">
+            </ui:include>
+        </aside>
 
         <main class="main">
             <ui:insert name="main"></ui:insert>
             <ui:include src="/templates/dialog-message-error/error-messgage-dialog.xhtml"/>
             <div id="statusDialog" style="display: none">
-                <p:graphicImage value="#{loginController.imgLoading}"/>
+                <p:graphicImage value="#{loginBean.imgLoading}"/>
             </div>
             <div id="redirectDialog" style="display: none">
-                <p:graphicImage value="#{loginController.imgLoading}"/>
+                <p:graphicImage value="#{loginBean.imgLoading}"/>
             </div>
             <p:ajaxStatus onstart="showLoading()" onsuccess="hideLoading()"/>
         </main>
-
-        <footer class="footer">
-            <ui:include src="./footer.xhtml"></ui:include>
-        </footer>
     </div>
     <h:outputStylesheet library="primefaces-omg" name="css/bootstrap.min.css"></h:outputStylesheet>
     <h:outputStylesheet library="primefaces-omg" name="css/layout.css"></h:outputStylesheet>
