@@ -7,13 +7,22 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">1234</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/ql_chung_cu</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ql_chung_cu</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.CharSet">utf8</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Map Entity -->
         <mapping class="com.btl.entities.TaiKhoanEntity"/>
+        <mapping class="com.btl.entities.BanQuanLyNhanVienEntity"/>
+        <mapping class="com.btl.entities.CanHoEntity"/>
+        <mapping class="com.btl.entities.HoaDonEntity"/>
+        <mapping class="com.btl.entities.HopDongEntity"/>
+        <mapping class="com.btl.entities.KhachHangEntity"/>
+        <mapping class="com.btl.entities.TheoDoiCongNoKh"/>
+        <mapping class="com.btl.entities.TinhTrangSuDungCanHoEntity"/>
+        <mapping class="com.btl.entities.ToaNhaEntity"/>
+
 
     </session-factory>
 </hibernate-configuration>

@@ -1,7 +1,7 @@
 package com.btl.controller;
 
-import com.btl.dao.QlTaiKhoanDAO;
-import com.btl.entities.TaiKhoanEntity;
+import com.btl.dao.QLNhanVienDAO;
+import com.btl.entities.BanQuanLyNhanVienEntity;
 import com.btl.utils.BaseController;
 import com.btl.utils.Constants;
 import com.btl.utils.ExecuteObjectController;
@@ -13,33 +13,30 @@ import org.primefaces.PrimeFaces;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean(name = "qlTaiKhoanController")
+@ManagedBean(name = "qlNhanVienController")
 @ViewScoped
 @Getter
 @Setter
-public class QlTaiKhoanController extends BaseController implements Serializable, ExecuteObjectController<TaiKhoanEntity> {
-    private TaiKhoanEntity taiKhoanEntity;
-    private QlTaiKhoanDAO service;
-    private List<TaiKhoanEntity> list;
+public class QLNhanVienController extends BaseController implements Serializable, ExecuteObjectController<BanQuanLyNhanVienEntity> {
+    private BanQuanLyNhanVienEntity banQuanLyNhanVienEntity;
+    private QLNhanVienDAO service;
+    private List<BanQuanLyNhanVienEntity> list;
     private int flag;
-    private String password;
-    private FacesContext facesContext = FacesContext.getCurrentInstance();
-    private HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+
 
     @PostConstruct
     public void init() {
-        taiKhoanEntity = new TaiKhoanEntity();
-        service = new QlTaiKhoanDAO();
+        banQuanLyNhanVienEntity = new BanQuanLyNhanVienEntity();
+        service = new QLNhanVienDAO();
         list = new ArrayList<>();
         checkUserIsLogin();
         onShowData();
     }
+
 
     @Override
     public void onShowData() {
@@ -48,19 +45,18 @@ public class QlTaiKhoanController extends BaseController implements Serializable
 
     @Override
     public void onSearch() {
-        list = service.onSearchData(taiKhoanEntity);
+        list = service.onSearchData(banQuanLyNhanVienEntity);
     }
 
     @Override
     public void prepareInsert() {
         flag = 1;
-        taiKhoanEntity = new TaiKhoanEntity();
+        banQuanLyNhanVienEntity = new BanQuanLyNhanVienEntity();
     }
 
     @Override
     public void onInsert() {
-        taiKhoanEntity.setPassWord(password);
-        if (service.insertData(taiKhoanEntity)) {
+        if (service.insertData(banQuanLyNhanVienEntity)) {
             Utils.addMessage(Constants.INS_SUCCESS);
             onShowData();
             PrimeFaces.current().executeScript("PF('dlgAddEdit').hide()");
@@ -70,29 +66,20 @@ public class QlTaiKhoanController extends BaseController implements Serializable
     }
 
     @Override
-    public void findById(int entity) {
-        taiKhoanEntity = service.findById(entity);
-        flag = 2;
-    }
-
-    @Override
     public void onComfirmUpdate() {
-        if (checkCurentUser(taiKhoanEntity.getUserName())) {
-            taiKhoanEntity.setPassWord(password);
-        }
-        if (service.updateData(taiKhoanEntity)) {
+        if (service.updateData(banQuanLyNhanVienEntity)) {
             Utils.addMessage(Constants.UPD_SUCCESS);
             onShowData();
             PrimeFaces.current().executeScript("PF('dlgAddEdit').hide()");
-            taiKhoanEntity = new TaiKhoanEntity();
+            banQuanLyNhanVienEntity = new BanQuanLyNhanVienEntity();
         } else {
             Utils.errMessage(Constants.UPD_FAIL);
         }
     }
 
     @Override
-    public void onDelete(TaiKhoanEntity entity) {
-        if (service.deleteData(entity)) {
+    public void onDelete(BanQuanLyNhanVienEntity banQuanLyNhanVienOnDel) {
+        if (service.deleteData(banQuanLyNhanVienOnDel)) {
             Utils.addMessage(Constants.DEL_SUCCESS);
             onShowData();
         } else {
@@ -103,11 +90,12 @@ public class QlTaiKhoanController extends BaseController implements Serializable
     @Override
     public void resetDialogForm() {
         onShowData();
-        taiKhoanEntity = new TaiKhoanEntity();
+        banQuanLyNhanVienEntity = new BanQuanLyNhanVienEntity();
     }
 
-    public boolean checkCurentUser(String userName) {
-        String curentUser = (String) session.getAttribute("username");
-        return curentUser.equalsIgnoreCase(userName);
+    @Override
+    public void findById(int entity) {
+        banQuanLyNhanVienEntity = service.findById(entity);
+        flag = 2;
     }
 }

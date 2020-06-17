@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <h:form id="dlgAddEdit">
+        <p:dialog id="dlgAddEdit" modal="true" closable="true"
+                  closeOnEscape="true"
+                  header="#{qlCanHoController.flag == 1 ? 'Thêm căn hộ ' : 'Cập nhật thông tin căn hộ '}"
+                  widgetVar="dlgAddEdit" height="200" width="700">
+            <p:panel id="add">
+                <p:outputPanel id="frmSearch" styleClass="col-sm-12 col-md-12"
+                               class="form-horizontal">
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-3 col-md-3  control-label"
+                                       value="Tên căn hộ:" for="tenTn"/>
+                        <div class="col-sm-9 col-md-9">
+                            <p:inputText id="tenTn" styleClass="form-control"
+                                         value="#{qlCanHoController.canHoEntity.tenCanHo}"
+                                         maxlength="250" required="true">
+                            </p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-3 col-md-3  control-label"
+                                       value="Số tầng:" for="soCanHo"/>
+                        <div class="col-sm-9 col-md-9">
+                            <p:inputNumber id="soCanHo" inputStyleClass="form-control"
+                                           value="#{qlCanHoController.canHoEntity.soTang}"
+                                           maxlength="250" required="true">
+                            </p:inputNumber>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-3 col-md-3  control-label"
+                                       value="Số phòng:" for="soCanHo"/>
+                        <div class="col-sm-9 col-md-9">
+                            <p:inputNumber id="sophong" inputStyleClass="form-control"
+                                           value="#{qlCanHoController.canHoEntity.soPhong}"
+                                           maxlength="250" required="true">
+                            </p:inputNumber>
+                        </div>
+                    </div>
+
+
+                    <div class="EmptyBox10"/>
+
+                    <div class="text-center">
+                        <p:commandButton value="Thêm mới" icon="fa fa-plus"
+                                         actionListener="#{qlCanHoController.onInsert()}"
+                                         rendered="#{qlCanHoController.flag eq 1}" update="frmMain:tblNhanVien">
+                        </p:commandButton>
+
+                        <p:commandButton id="btnUpdate" process="@form"
+                                         value="#{msg['common.button.label.update']}"
+                                         icon="fa fa-fw fa-edit"
+                                         actionListener="#{qlCanHoController.onComfirmUpdate()}"
+                                         update="frmMain:tblNhanVien" rendered="#{qlCanHoController.flag eq 2}">
+                        </p:commandButton>
+
+                        <p:commandButton id="btnClose" type="button"
+                                         value="#{msg['common.button.label.close']}" icon="ui-icon-cancel"
+                                         onclick="PF('dlgAddEdit').hide();">
+                        </p:commandButton>
+                    </div>
+                </p:outputPanel>
+            </p:panel>
+        </p:dialog>
+    </h:form>
+</ui:composition>
+

@@ -1,7 +1,7 @@
 package com.btl.controller;
 
-import com.btl.dao.QlTaiKhoanDAO;
-import com.btl.entities.TaiKhoanEntity;
+import com.btl.dao.QLHopDongDAO;
+import com.btl.entities.HopDongEntity;
 import com.btl.utils.BaseController;
 import com.btl.utils.Constants;
 import com.btl.utils.ExecuteObjectController;
@@ -13,33 +13,29 @@ import org.primefaces.PrimeFaces;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean(name = "qlTaiKhoanController")
+@ManagedBean(name = "qlHopDongController")
 @ViewScoped
 @Getter
 @Setter
-public class QlTaiKhoanController extends BaseController implements Serializable, ExecuteObjectController<TaiKhoanEntity> {
-    private TaiKhoanEntity taiKhoanEntity;
-    private QlTaiKhoanDAO service;
-    private List<TaiKhoanEntity> list;
+public class QLHopDongController extends BaseController implements Serializable, ExecuteObjectController<HopDongEntity> {
+    private HopDongEntity hopDongEntity;
+    private QLHopDongDAO service;
+    private List<HopDongEntity> list;
     private int flag;
-    private String password;
-    private FacesContext facesContext = FacesContext.getCurrentInstance();
-    private HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 
     @PostConstruct
     public void init() {
-        taiKhoanEntity = new TaiKhoanEntity();
-        service = new QlTaiKhoanDAO();
+        hopDongEntity = new HopDongEntity();
+        service = new QLHopDongDAO();
         list = new ArrayList<>();
         checkUserIsLogin();
         onShowData();
     }
+
 
     @Override
     public void onShowData() {
@@ -48,19 +44,18 @@ public class QlTaiKhoanController extends BaseController implements Serializable
 
     @Override
     public void onSearch() {
-        list = service.onSearchData(taiKhoanEntity);
+        list = service.onSearchData(hopDongEntity);
     }
 
     @Override
     public void prepareInsert() {
         flag = 1;
-        taiKhoanEntity = new TaiKhoanEntity();
+        hopDongEntity = new HopDongEntity();
     }
 
     @Override
     public void onInsert() {
-        taiKhoanEntity.setPassWord(password);
-        if (service.insertData(taiKhoanEntity)) {
+        if (service.insertData(hopDongEntity)) {
             Utils.addMessage(Constants.INS_SUCCESS);
             onShowData();
             PrimeFaces.current().executeScript("PF('dlgAddEdit').hide()");
@@ -70,29 +65,20 @@ public class QlTaiKhoanController extends BaseController implements Serializable
     }
 
     @Override
-    public void findById(int entity) {
-        taiKhoanEntity = service.findById(entity);
-        flag = 2;
-    }
-
-    @Override
     public void onComfirmUpdate() {
-        if (checkCurentUser(taiKhoanEntity.getUserName())) {
-            taiKhoanEntity.setPassWord(password);
-        }
-        if (service.updateData(taiKhoanEntity)) {
+        if (service.updateData(hopDongEntity)) {
             Utils.addMessage(Constants.UPD_SUCCESS);
             onShowData();
             PrimeFaces.current().executeScript("PF('dlgAddEdit').hide()");
-            taiKhoanEntity = new TaiKhoanEntity();
+            hopDongEntity = new HopDongEntity();
         } else {
             Utils.errMessage(Constants.UPD_FAIL);
         }
     }
 
     @Override
-    public void onDelete(TaiKhoanEntity entity) {
-        if (service.deleteData(entity)) {
+    public void onDelete(HopDongEntity hopDongOnDel) {
+        if (service.deleteData(hopDongOnDel)) {
             Utils.addMessage(Constants.DEL_SUCCESS);
             onShowData();
         } else {
@@ -103,11 +89,12 @@ public class QlTaiKhoanController extends BaseController implements Serializable
     @Override
     public void resetDialogForm() {
         onShowData();
-        taiKhoanEntity = new TaiKhoanEntity();
+        hopDongEntity = new HopDongEntity();
     }
 
-    public boolean checkCurentUser(String userName) {
-        String curentUser = (String) session.getAttribute("username");
-        return curentUser.equalsIgnoreCase(userName);
+    @Override
+    public void findById(int entity) {
+        hopDongEntity = service.findById(entity);
+        flag = 2;
     }
 }

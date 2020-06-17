@@ -52,20 +52,21 @@ public class QlTaiKhoanDAO extends HibernateUtil implements ExecuteObjectDAO<Tai
         return true;
     }
 
-    @Override
-    public boolean deleteData(TaiKhoanEntity userDel) {
-        Session session = getSession();
-        session.beginTransaction();
-        session.delete(userDel);
-        session.getTransaction().commit();
-        return true;
-    }
 
     @Override
     public boolean updateData(TaiKhoanEntity userUpdate) {
         Session session = getSession();
         session.beginTransaction();
         session.update(userUpdate);
+        session.getTransaction().commit();
+        return true;
+    }
+
+    @Override
+    public boolean deleteData(TaiKhoanEntity userDel) {
+        Session session = getSession();
+        session.beginTransaction();
+        session.delete(userDel);
         session.getTransaction().commit();
         return true;
     }

@@ -8,7 +8,7 @@
 
         <h:form id="frmMain">
             <h1 style="color: #3d5640">
-                <i class="fa fa-fw fa-users"/> QUẢN LÝ TÀI KHOẢN
+                <i class="fa fa-archive"/> QUẢN LÝ CĂN HỘ
             </h1>
 
             <p:panel styleClass="card" toggleable="true">
@@ -17,63 +17,38 @@
 
                     <div class="form-group">
                         <p:outputLabel class="col-sm-2 col-md-2  control-label"
-                                       value="Họ và tên:"/>
-                        <div class="col-sm-4 col-md-4">
-                            <p:inputText styleClass="form-control" value="#{qlTaiKhoanController.taiKhoanEntity.fullName}"
-                                         maxlength="50">
-                            </p:inputText>
-                        </div>
-
-                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
-                                       value="Tên tài khoản:"/>
-                        <div class="col-sm-4 col-md-4">
-                            <p:inputText styleClass="form-control" value="#{qlTaiKhoanController.taiKhoanEntity.userName}"
-                                         maxlength="20">
-                            </p:inputText>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
-                                       value="Vai trò : "/>
-                        <div class="col-sm-4 col-md-4">
-                            <p:selectOneRadio columns="3" layout="responsive"
-                                              value="#{qlTaiKhoanController.taiKhoanEntity.role}">
-                                <f:selectItem itemLabel="SuperAdmin" itemValue="1"></f:selectItem>
-                                <f:selectItem itemLabel="Admin" itemValue="2"></f:selectItem>
-                                <f:selectItem itemLabel="User" itemValue="3"></f:selectItem>
-                            </p:selectOneRadio>
-                        </div>
-
-                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
-                                       value="Trạng thái : "/>
-                        <div class="col-sm-4 col-md-4">
-                            <p:selectOneMenu styleClass="form-control"
-                                             value="#{qlTaiKhoanController.taiKhoanEntity.status}">
-                                <f:selectItem itemLabel="--Chọn--"></f:selectItem>
-                                <f:selectItem itemLabel="Đang hoạt động" itemValue="1"/>
-                                <f:selectItem itemLabel="Ngừng hoạt động" itemValue="0"/>
-                            </p:selectOneMenu>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
-                                       value="Email:"/>
-                        <div class="col-sm-4 col-md-4">
-                            <p:inputText styleClass="form-control" value="#{qlTaiKhoanController.taiKhoanEntity.email}"
-                                         maxlength="50" placeholder="example@gmail.com">
-                            </p:inputText>
-                        </div>
-
-                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
-                                       value="Số điện thoại : "/>
+                                       value="Tên căn hộ:"/>
                         <div class="col-sm-4 col-md-4">
                             <p:inputText styleClass="form-control"
-                                         onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"
-                                         value="#{qlTaiKhoanController.taiKhoanEntity.phone}" maxlength="15">
+                                         value="#{qlCanHoController.canHoEntity.tenCanHo}"
+                                         maxlength="250">
                             </p:inputText>
                         </div>
+
+
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Số tầng:"/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:inputText styleClass="form-control"
+                                         value="#{qlCanHoController.canHoEntity.soTang}"
+                                         maxlength="250">
+                            </p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="EmptyBox5"/>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Số phòng:"/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:inputText styleClass="form-control"
+                                         value="#{qlCanHoController.canHoEntity.soPhong}"
+                                         maxlength="250">
+                            </p:inputText>
+                        </div>
+
+
                     </div>
 
                     <div class="EmptyBox5"/>
@@ -82,27 +57,28 @@
                         <div class="text-bottom">
                             <p:commandButton value="#{msg['common.button.label.search']}"
                                              icon="ui-icon-search" id="btnTimkiem"
-                                             actionListener="#{qlTaiKhoanController.onSearch()}"
+                                             actionListener="#{qlCanHoController.onSearch()}"
                                              update="frmMain:tblNhanVien">
                             </p:commandButton>
+
                             <p:commandButton value="#{msg['common.button.label.reset']}"
                                              icon="fa fa-refresh" id="reset"
-                                             actionListener="#{qlTaiKhoanController.resetDialogForm()}"
+                                             actionListener="#{qlCanHoController.resetDialogForm()}"
                                              update="frmSearch">
                             </p:commandButton>
                         </div>
                     </div>
                 </p:outputPanel>
             </p:panel>
-            <p:panel id="toggleable" header="Danh sách tài khoản"
+            <p:panel id="toggleable" header="Danh sách căn hộ"
                      styleClass="card">
                 <p:outputPanel>
                     <div class="form-horizontal" style="text-align: center">
                         <div class="text-center">
 
                             <p:commandButton id="btnAdd"
-                                             value="#{msg['common.button.label.add']}" icon="fa fa-plus"
-                                             actionListener="#{qlTaiKhoanController.prepareInsert()}"
+                                             value="Thêm mới" icon="fa fa-plus"
+                                             actionListener="#{qlCanHoController.prepareInsert()}"
                                              oncomplete="PF('dlgAddEdit').show();" update="dlgAddEdit"
                                              resetValues="true">
                             </p:commandButton>
@@ -110,15 +86,16 @@
                         </div>
                     </div>
                     <div class="EmptyBox10"/>
+                    <!--Sửa thì bấm alt + shif + R -->
                     <p:dataTable id="tblNhanVien" paginator="true" rows="10"
-                                 value="#{qlTaiKhoanController.list}" var="nhanVien" scrollable="true"
+                                 value="#{qlCanHoController.list}" var="canHo" scrollable="true"
                                  paginatorPosition="bottom" rowsPerPageTemplate="5,10,20"
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  emptyMessage="#{msg['datatable.label.notfound']}">
                         <f:facet name="header">
                             <p:outputPanel style="text-align: left;">
                                 <h:outputText
-                                        value="Tổng số bản ghi : #{qlTaiKhoanController.list.size()}"></h:outputText>
+                                        value="Tổng số bản ghi : #{qlCanHoController.list.size()}"></h:outputText>
                             </p:outputPanel>
                         </f:facet>
 
@@ -128,15 +105,14 @@
                                              value="#{msg['common.dialog.header.prefixUpdate']}"
                                              style="text-align:center;" icon="fa fa-fw fa-edit"
                                              oncomplete="PF('dlgAddEdit').show();"
-                                             actionListener="#{qlTaiKhoanController.findById(nhanVien.id)}"
+                                             actionListener="#{qlCanHoController.findById(canHo.maCh)}"
                                              update="dlgAddEdit">
                             </p:commandButton>
 
                             <p:commandButton id="delete"
-                                             rendered="#{!qlTaiKhoanController.checkCurentUser(nhanVien.userName)}"
                                              value="#{msg['common.button.label.delete']}"
                                              icon="fa fa-fw fa-trash" style="text-align:center;"
-                                             actionListener="#{qlTaiKhoanController.onDelete(nhanVien)}"
+                                             actionListener="#{qlCanHoController.onDelete(toaNha)}"
                                              update="frmMain:tblNhanVien">
 
                                 <p:confirm header="Xóa"
@@ -159,41 +135,27 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Họ và Tên">
-                            <h:outputText value="#{nhanVien.fullName}"></h:outputText>
+                        <p:column width="200" headerText="Mã căn hộ">
+                            <h:outputText value="#{canHo.maCh}"/>
                         </p:column>
 
-                        <p:column width="150" style="text-align:left" headerText="Vai trò">
-                            <h:outputText value="SuperAdmin" rendered="#{nhanVien.role == 1}"/>
-                            <h:outputText value="Admin" rendered="#{nhanVien.role == 2}"/>
-                            <h:outputText value="User" rendered="#{nhanVien.role == 3}"/>
+                        <p:column width="100" headerText="Tên căn hộ">
+                            <h:outputText value="#{canHo.tenCanHo}"/>
                         </p:column>
 
-                        <p:column width="250" headerText="Tên tài khoản">
-                            <h:outputText value="#{nhanVien.userName}"></h:outputText>
+                        <p:column width="100" headerText="Số tầng">
+                            <h:outputText value="#{canHo.soTang}"/>
                         </p:column>
 
-                        <p:column width="250" headerText="Email">
-                            <h:outputText value="#{nhanVien.email}"></h:outputText>
+                        <p:column width="100" headerText="Số phòng">
+                            <h:outputText value="#{canHo.soPhong}"/>
                         </p:column>
-
-                        <p:column width="100" headerText="Số điện thoại">
-                            <h:outputText value="#{nhanVien.phone}"></h:outputText>
-                        </p:column>
-
-                        <p:column width="150" headerText="Trạng thái">
-                            <h:outputText rendered="#{nhanVien.status == 1}"
-                                          value="Đang hoạt động"/>
-                            <h:outputText rendered="#{nhanVien.status == 0}"
-                                          value="Ngừng hoạt động"/>
-                        </p:column>
-
                     </p:dataTable>
                 </p:outputPanel>
             </p:panel>
             <br/>
             <br/>
         </h:form>
-        <ui:include src="/admin/qlTaiKhoan/add-edit-tai-khoan-dialog.xhtml"></ui:include>
+        <ui:include src="/admin/qlCanHo/add-edit-ql-can-ho.dialog.xhtml"></ui:include>
     </ui:define>
 </ui:composition>

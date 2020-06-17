@@ -1,0 +1,140 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="/templates/hsdn-master.xhtml">
+
+    <ui:define name="main">
+
+        <h:form id="frmMain">
+            <h1 style="color: #3d5640">
+                <i class="fa fa-newspaper-o"/> QUẢN LÝ CÔNG NỢ KHÁCH HÀNG
+            </h1>
+
+            <p:panel styleClass="card" toggleable="true">
+                <p:outputPanel id="frmSearch" styleClass="col-sm-12 col-md-12"
+                               class="form-horizontal">
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Công nợ khách hàng:"/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:inputText styleClass="form-control"
+                                         value="#{qlTheoDoiCongNoKhController.theoDoiCongNoKh.congNoKh}"
+                                         maxlength="250">
+                            </p:inputText>
+                        </div>
+
+
+                        <p:outputLabel class="col-sm-2 col-md-2  control-label"
+                                       value="Mã khách hàng:"/>
+                        <div class="col-sm-4 col-md-4">
+                            <p:inputNumber styleClass="form-control"
+                                           value="#{qlTheoDoiCongNoKhController.theoDoiCongNoKh.maKh}"
+                                           maxlength="250">
+                            </p:inputNumber>
+                        </div>
+                    </div>
+
+
+                    <div class="EmptyBox5"/>
+
+                    <div class="form-horizontal" style="text-align: right">
+                        <div class="text-bottom">
+                            <p:commandButton value="#{msg['common.button.label.search']}"
+                                             icon="ui-icon-search" id="btnTimkiem"
+                                             actionListener="#{qlTheoDoiCongNoKhController.onSearch()}"
+                                             update="frmMain:tblNhanVien">
+                            </p:commandButton>
+
+                            <p:commandButton value="#{msg['common.button.label.reset']}"
+                                             icon="fa fa-refresh" id="reset"
+                                             actionListener="#{qlTheoDoiCongNoKhController.resetDialogForm()}"
+                                             update="frmSearch">
+                            </p:commandButton>
+                        </div>
+                    </div>
+                </p:outputPanel>
+            </p:panel>
+            <p:panel id="toggleable" header="Danh sách công nợ khách hàng"
+                     styleClass="card">
+                <p:outputPanel>
+                    <div class="form-horizontal" style="text-align: center">
+                        <div class="text-center">
+
+                            <p:commandButton id="btnAdd"
+                                             value="Thêm mới" icon="fa fa-plus"
+                                             actionListener="#{qlTheoDoiCongNoKhController.prepareInsert()}"
+                                             oncomplete="PF('dlgAddEdit').show();" update="dlgAddEdit"
+                                             resetValues="true">
+                            </p:commandButton>
+
+                        </div>
+                    </div>
+                    <div class="EmptyBox10"/>
+                    <p:dataTable id="tblNhanVien" paginator="true" rows="10"
+                                 value="#{qlTheoDoiCongNoKhController.list}" var="congNo" scrollable="true"
+                                 paginatorPosition="bottom" rowsPerPageTemplate="5,10,20"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 emptyMessage="#{msg['datatable.label.notfound']}">
+                        <f:facet name="header">
+                            <p:outputPanel style="text-align: left;">
+                                <h:outputText
+                                        value="Tổng số bản ghi : #{qlTheoDoiCongNoKhController.list.size()}"></h:outputText>
+                            </p:outputPanel>
+                        </f:facet>
+
+                        <p:column width="130" style="text-align:center"
+                                  headerText="#{msg['common.table.col-header.action']}">
+                            <p:commandButton id="update"
+                                             value="#{msg['common.dialog.header.prefixUpdate']}"
+                                             style="text-align:center;" icon="fa fa-fw fa-edit"
+                                             oncomplete="PF('dlgAddEdit').show();"
+                                             actionListener="#{qlTheoDoiCongNoKhController.findById(congNo.maKh)}"
+                                             update="dlgAddEdit">
+                            </p:commandButton>
+
+                            <p:commandButton id="delete"
+                                             value="#{msg['common.button.label.delete']}"
+                                             icon="fa fa-fw fa-trash" style="text-align:center;"
+                                             actionListener="#{qlTheoDoiCongNoKhController.onDelete(congNo)}"
+                                             update="frmMain:tblNhanVien">
+
+                                <p:confirm header="Xóa"
+                                           message="#{msg['common.confirmDialog.message']}"
+                                           icon="ui-icon-alert">
+                                </p:confirm>
+                            </p:commandButton>
+
+                            <p:confirmDialog global="true" widgetVar="confirmdlg">
+                                <p:commandButton value="#{msg['common.confirmDialog.yes']}"
+                                                 styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+                                                 update="frmMain">
+                                </p:commandButton>
+
+                                <p:commandButton value="#{msg['common.confirmDialog.no']}"
+                                                 styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+                                                 onclick="PF('confirmdlg').hide();" type="button">
+                                </p:commandButton>
+                            </p:confirmDialog>
+
+                        </p:column>
+
+                        <p:column width="200" headerText="Công nợ khách hàng">
+                            <h:outputText value="#{congNo.congNoKh}"/>
+                        </p:column>
+
+                        <p:column width="100" headerText="Mã khách hàng" style="text-align: center">
+                            <h:outputText value="#{congNo.maKh}"/>
+                        </p:column>
+
+
+                    </p:dataTable>
+                </p:outputPanel>
+            </p:panel>
+            <br/>
+            <br/>
+        </h:form>
+        <ui:include src="/admin/qlTheoDoiCnkh/add-edit-ql-theo-doi-cong-no-dialog.xhtml"></ui:include>
+    </ui:define>
+</ui:composition>

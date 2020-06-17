@@ -1788,6 +1788,7 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 
 .ui-datatable th.ui-state-default {
     background: #085361;
+    text-align: center !important;
     border-color: #d9d9d9;
     color: white;
     font-weight: bold;
