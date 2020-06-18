@@ -50,7 +50,7 @@
                             <p:commandButton value="#{msg['common.button.label.search']}"
                                              icon="ui-icon-search" id="btnTimkiem"
                                              actionListener="#{qlHopDongController.onSearch()}"
-                                             update="frmMain:tblNhanVien">
+                                             update="frmMain:tblHopdong">
                             </p:commandButton>
 
                             <p:commandButton value="#{msg['common.button.label.reset']}"
@@ -78,11 +78,23 @@
                         </div>
                     </div>
                     <div class="EmptyBox10"/>
-                    <p:dataTable id="tblNhanVien" paginator="true" rows="10"
+                    <p:dataTable id="tblHopdong" paginator="true" rows="10"
                                  value="#{qlHopDongController.list}" var="hopDong"
                                  paginatorPosition="bottom" rowsPerPageTemplate="5,10,20"
-                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
                                  emptyMessage="#{msg['datatable.label.notfound']}">
+
+                        <f:facet name="{Exporters}">
+                            <div style="float:right;padding-top: 5px;">
+                                <h:commandLink>
+                                    <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                    <p:dataExporter type="xlsxstream" target="tblHopdong"
+                                                    fileName="danhsachhopdong"/>
+                                </h:commandLink>
+                            </div>
+                        </f:facet>
+
+
                         <f:facet name="header">
                             <p:outputPanel style="text-align: left;">
                                 <h:outputText
@@ -90,7 +102,7 @@
                             </p:outputPanel>
                         </f:facet>
 
-                        <p:column width="100" style="text-align:center"
+                        <p:column width="100" style="text-align:center" exportable="false"
                                   headerText="#{msg['common.table.col-header.action']}">
                             <p:commandButton id="update"
                                              value="#{msg['common.dialog.header.prefixUpdate']}"
@@ -104,7 +116,7 @@
                                              value="#{msg['common.button.label.delete']}"
                                              icon="fa fa-fw fa-trash" style="text-align:center;"
                                              actionListener="#{qlHopDongController.onDelete(hopDong)}"
-                                             update="frmMain:tblNhanVien">
+                                             update="frmMain:tblHopdong">
 
                                 <p:confirm header="Xóa"
                                            message="#{msg['common.confirmDialog.message']}"
