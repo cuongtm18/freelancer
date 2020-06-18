@@ -1,18 +1,6 @@
 package com.btl.layout;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
-
+import com.btl.utils.Constants;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.collections4.map.HashedMap;
@@ -24,7 +12,17 @@ import org.primefaces.model.menu.MenuModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.btl.utils.Constants;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 @ViewScoped
 @ManagedBean(name = "masterController")
@@ -76,7 +74,7 @@ public class MasterLayoutController implements Serializable {
             addMenu(mainMenuModel, Constants.QL_CAN_HO, "/admin/qlCanHo/ql-can-ho.xhtml", "fa fa-archive");
             addMenu(mainMenuModel, Constants.QL_HOP_DONG, "/admin/qlHopDong/ql-hop-dong.xhtml", "fa fa-file-archive-o");
         } else if (role != null && role == 3) {
-            mainMenuModel = new DynamicMenuModel();
+            FacesContext.getCurrentInstance().getExternalContext().redirect(rootPath + "/admin/qlCuDan/ql-cu-dan.xhtml");
         } else {
             FacesContext.getCurrentInstance().getExternalContext().redirect(rootPath + "/login.xhtml");
         }

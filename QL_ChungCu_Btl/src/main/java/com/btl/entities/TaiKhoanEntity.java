@@ -37,6 +37,6 @@ public class TaiKhoanEntity implements Serializable {
     @Column(name = "SDT")
     private String phone;
 
-    @Column(name = "TrangThai")
+    @Column(name = "TrangThai") 
     private Integer status;
 }

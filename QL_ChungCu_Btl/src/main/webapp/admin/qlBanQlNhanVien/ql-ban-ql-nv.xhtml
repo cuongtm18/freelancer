@@ -118,11 +118,11 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Tên nhân viên">
+                        <p:column width="200" headerText="Tên nhân viên" sortBy="#{nhanVien.tenNhanVien}">
                             <h:outputText value="#{nhanVien.tenNhanVien}"></h:outputText>
                         </p:column>
 
-                        <p:column width="100" headerText="Số điện thoại">
+                        <p:column width="100" headerText="Số điện thoại" sortBy="#{nhanVien.phone}">
                             <h:outputText value="#{nhanVien.phone}"></h:outputText>
                         </p:column>
                     </p:dataTable>

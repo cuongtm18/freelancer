@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <h:form id="dlgAddEdit">
+        <p:dialog id="dlgAddEdit" modal="true" closable="true"
+                  closeOnEscape="true"
+                  header="#{qlHopDongController.flag == 1 ? 'Thêm hợp đồng' : 'Cập nhật thông tin hợp đồng'}"
+                  widgetVar="dlgAddEdit" height="300" width="700">
+            <p:panel id="add">
+                <p:outputPanel id="frmSearch" styleClass="col-sm-12 col-md-12"
+                               class="form-horizontal">
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-3 col-md-3  control-label"
+                                       value="Ngày đăng ký:" for="ngayDK"/>
+                        <div class="col-sm-9 col-md-9">
+                            <p:calendar id="ngayDK" styleClass="form-control"
+                                        value="#{qlHopDongController.hopDongEntity.ngayDangKy}"
+                                        maxlength="250" required="true">
+                            </p:calendar>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-3 col-md-3  control-label"
+                                       value="Ngày bàn giao:" for="ngayBG"/>
+                        <div class="col-sm-9 col-md-9">
+                            <p:calendar id="ngayBG" styleClass="form-control"
+                                        value="#{qlHopDongController.hopDongEntity.ngayBanGiao}"
+                                        maxlength="250" required="true">
+                            </p:calendar>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-3 col-md-3  control-label"
+                                       value="Giá trị:"/>
+                        <div class="col-sm-9 col-md-9">
+                            <p:inputText id="giaTri" styleClass="form-control"
+                                         value="#{qlHopDongController.hopDongEntity.giaTri}"
+                                         maxlength="250">
+                            </p:inputText>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-sm-3 col-md-3  control-label"
+                                       value="Tình trạng thực tế:"/>
+                        <div class="col-sm-9 col-md-9">
+                            <p:inputText id="tinhTrangThuTe" styleClass="form-control"
+                                         value="#{qlHopDongController.hopDongEntity.tinhTrangThucTe}"
+                                         maxlength="250">
+                            </p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p:commandButton value="Thêm mới" icon="fa fa-plus"
+                                         actionListener="#{qlHopDongController.onInsert()}"
+                                         rendered="#{qlHopDongController.flag eq 1}" update="frmMain:tblNhanVien">
+                        </p:commandButton>
+
+                        <p:commandButton id="btnUpdate" process="@form"
+                                         value="#{msg['common.button.label.update']}"
+                                         icon="fa fa-fw fa-edit"
+                                         actionListener="#{qlHopDongController.onComfirmUpdate()}"
+                                         update="frmMain:tblNhanVien" rendered="#{qlHopDongController.flag eq 2}">
+                        </p:commandButton>
+
+                        <p:commandButton id="btnClose" type="button"
+                                         value="#{msg['common.button.label.close']}" icon="ui-icon-cancel"
+                                         onclick="PF('dlgAddEdit').hide();">
+                        </p:commandButton>
+                    </div>
+                </p:outputPanel>
+            </p:panel>
+        </p:dialog>
+    </h:form>
+</ui:composition>

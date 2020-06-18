@@ -14,15 +14,11 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 public class HopDongEntity implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer maHd;
-
-    @Column(name = "id")
-    private Integer id;
 
     @Column(name = "Ngayky")
     private Date ngayDangKy;
@@ -31,7 +27,7 @@ public class HopDongEntity implements Serializable {
     private Date ngayBanGiao;
 
     @Column(name = "Giatri")
-    private String giaiTri;
+    private String giaTri;
 
     @Column(name = "Tinhtrangthucte")
     private String tinhTrangThucTe;
