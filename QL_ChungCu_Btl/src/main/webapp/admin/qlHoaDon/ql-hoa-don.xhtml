@@ -136,15 +136,16 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Mã giao dịch">
+                        <p:column width="200" headerText="Mã giao dịch" sortBy="#{hopDong.maGd}">
                             <h:outputText value="#{hopDong.maGd}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Các loại chi phí">
+                        <p:column width="100" headerText="Các loại chi phí" sortBy="#{hopDong.cacLoaiChiPhi}">
                             <h:outputText value="#{hopDong.cacLoaiChiPhi}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Ngày giao dịch" style="text-align: center">
+                        <p:column width="100" headerText="Ngày giao dịch" style="text-align: center"
+                                  sortBy="#{hopDong.ngayGiaoDich}">
                             <h:outputText value="#{hopDong.ngayGiaoDich}"/>
                         </p:column>
 

@@ -122,15 +122,15 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Mã tòa nhà">
+                        <p:column width="200" headerText="Mã tòa nhà" sortBy="#{toaNha.maTn}">
                             <h:outputText value="#{toaNha.maTn}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Tên tòa nhà">
+                        <p:column width="100" headerText="Tên tòa nhà" sortBy="#{toaNha.tenTn}">
                             <h:outputText value="#{toaNha.tenTn}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Số căn hộ">
+                        <p:column width="100" headerText="Số căn hộ" sortBy="#{toaNha.soCanHo}">
                             <h:outputText value="#{toaNha.soCanHo}"/>
                         </p:column>
                     </p:dataTable>

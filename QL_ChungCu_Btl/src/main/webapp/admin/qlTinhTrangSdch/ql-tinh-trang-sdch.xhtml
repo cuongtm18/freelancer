@@ -116,12 +116,13 @@
                             </p:confirmDialog>
                         </p:column>
 
-                        <p:column width="100" headerText="Tình trạng">
+                        <p:column width="100" headerText="Tình trạng" sortBy="#{sdch.tinhTrang}">
                             <h:outputText rendered="#{sdch.tinhTrang eq 1}" value="Còn trống"/>
                             <h:outputText rendered="#{sdch.tinhTrang eq 0}" value="Đang được thuê"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Thời gian hoạt động" style="text-align: center">
+                        <p:column width="100" headerText="Thời gian hoạt động" style="text-align: center"
+                                  sortBy="#{sdch.thoiGianHd}">
                             <h:outputText value="#{sdch.thoiGianHd}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>

@@ -126,27 +126,29 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Mã hợp đồng">
+                        <p:column width="200" headerText="Mã hợp đồng" sortBy="#{hopDong.maHd}">
                             <h:outputText value="#{hopDong.maHd}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Ngày đăng ký" style="text-align: center">
+                        <p:column width="100" headerText="Ngày đăng ký" style="text-align: center"
+                                  sortBy="#{hopDong.ngayDangKy}">
                             <h:outputText value="#{hopDong.ngayDangKy}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
                         </p:column>
 
-                        <p:column width="100" headerText="Ngày bàn giao" style="text-align: center">
+                        <p:column width="100" headerText="Ngày bàn giao" style="text-align: center"
+                                  sortBy="#{hopDong.ngayBanGiao}">
                             <h:outputText value="#{hopDong.ngayBanGiao}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
                         </p:column>
 
-                        <p:column width="200" headerText="Giá trị">
+                        <p:column width="200" headerText="Giá trị" sortBy="#{hopDong.giaTri}">
                             <h:outputText value="#{hopDong.giaTri}"/>
                         </p:column>
 
-                        <p:column width="200" headerText="Tình trạng thực tế">
+                        <p:column width="200" headerText="Tình trạng thực tế" sortBy="#{hopDong.tinhTrangThucTe}">
                             <h:outputText value="#{hopDong.tinhTrangThucTe}"/>
                         </p:column>
 

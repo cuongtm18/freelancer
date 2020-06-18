@@ -135,19 +135,19 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Mã căn hộ">
+                        <p:column width="200" headerText="Mã căn hộ" sortBy="#{canHo.maCh}">
                             <h:outputText value="#{canHo.maCh}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Tên căn hộ">
+                        <p:column width="100" headerText="Tên căn hộ" sortBy="#{canHo.tenCanHo}">
                             <h:outputText value="#{canHo.tenCanHo}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Số tầng">
+                        <p:column width="100" headerText="Số tầng" sortBy="#{canHo.soTang}">
                             <h:outputText value="#{canHo.soTang}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Số phòng">
+                        <p:column width="100" headerText="Số phòng" sortBy="#{canHo.soPhong}">
                             <h:outputText value="#{canHo.soPhong}"/>
                         </p:column>
                     </p:dataTable>

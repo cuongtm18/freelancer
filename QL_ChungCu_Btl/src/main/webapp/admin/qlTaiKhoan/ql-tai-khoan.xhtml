@@ -159,29 +159,29 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Họ và Tên">
+                        <p:column width="200" headerText="Họ và Tên" sortBy="#{nhanVien.fullName}">
                             <h:outputText value="#{nhanVien.fullName}"></h:outputText>
                         </p:column>
 
-                        <p:column width="150" style="text-align:left" headerText="Vai trò">
+                        <p:column width="150" style="text-align:left" headerText="Vai trò" sortBy="#{nhanVien.role}">
                             <h:outputText value="SuperAdmin" rendered="#{nhanVien.role == 1}"/>
                             <h:outputText value="Admin" rendered="#{nhanVien.role == 2}"/>
                             <h:outputText value="User" rendered="#{nhanVien.role == 3}"/>
                         </p:column>
 
-                        <p:column width="250" headerText="Tên tài khoản">
+                        <p:column width="250" headerText="Tên tài khoản" sortBy="#{nhanVien.userName}">
                             <h:outputText value="#{nhanVien.userName}"></h:outputText>
                         </p:column>
 
-                        <p:column width="250" headerText="Email">
+                        <p:column width="250" headerText="Email" sortBy="#{nhanVien.email}">
                             <h:outputText value="#{nhanVien.email}"></h:outputText>
                         </p:column>
 
-                        <p:column width="100" headerText="Số điện thoại">
+                        <p:column width="100" headerText="Số điện thoại" sortBy="#{nhanVien.phone}">
                             <h:outputText value="#{nhanVien.phone}"></h:outputText>
                         </p:column>
 
-                        <p:column width="150" headerText="Trạng thái">
+                        <p:column width="150" headerText="Trạng thái" sortBy="#{nhanVien.status}">
                             <h:outputText rendered="#{nhanVien.status == 1}"
                                           value="Đang hoạt động"/>
                             <h:outputText rendered="#{nhanVien.status == 0}"

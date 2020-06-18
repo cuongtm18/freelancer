@@ -120,11 +120,13 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Công nợ khách hàng">
+                        <p:column width="200" headerText="Công nợ khách hàng" style="text-align: center"
+                                  sortBy="#{congNo.congNoKh}">
                             <h:outputText value="#{congNo.congNoKh}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Mã khách hàng" style="text-align: center">
+                        <p:column width="100" headerText="Mã khách hàng" style="text-align: center"
+                                  sortBy="#{congNo.maKh}">
                             <h:outputText value="#{congNo.maKh}"/>
                         </p:column>
 

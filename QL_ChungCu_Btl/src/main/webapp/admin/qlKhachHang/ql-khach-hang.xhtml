@@ -140,19 +140,21 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Tên khách hàng">
+                        <p:column width="200" headerText="Tên khách hàng" sortBy="#{khachHang.tenKhachHang}">
                             <h:outputText value="#{khachHang.tenKhachHang}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Số điện thoại" style="text-align: right">
+                        <p:column width="100" headerText="Số điện thoại" style="text-align: right"
+                                  sortBy="#{khachHang.phone}">
                             <h:outputText value="#{khachHang.phone}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Địa chỉ">
+                        <p:column width="100" headerText="Địa chỉ" sortBy="#{khachHang.diaChi}">
                             <h:outputText value="#{khachHang.diaChi}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Số CMND" style="text-align: right">
+                        <p:column width="100" headerText="Số CMND" style="text-align: right"
+                                  sortBy="#{khachHang.soCMTND}">
                             <h:outputText value="#{khachHang.soCMTND}"/>
                         </p:column>
                     </p:dataTable>
