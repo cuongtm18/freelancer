@@ -1795,12 +1795,12 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 }
 
 .ui-datatable th.ui-state-hover {
-    background: #d3d5d8;
+    background: #43bdd5;
     border-color: #d9d9d9
 }
 
 .ui-datatable th.ui-state-active {
-    background: #186ba0;
+    background: #3396a9;
     color: #fff
 }
 

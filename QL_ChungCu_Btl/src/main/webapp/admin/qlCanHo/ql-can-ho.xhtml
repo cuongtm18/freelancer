@@ -86,9 +86,8 @@
                         </div>
                     </div>
                     <div class="EmptyBox10"/>
-                    <!--Sửa thì bấm alt + shif + R -->
                     <p:dataTable id="tblNhanVien" paginator="true" rows="10"
-                                 value="#{qlCanHoController.list}" var="canHo" scrollable="true"
+                                 value="#{qlCanHoController.list}" var="canHo"
                                  paginatorPosition="bottom" rowsPerPageTemplate="5,10,20"
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  emptyMessage="#{msg['datatable.label.notfound']}">
@@ -99,7 +98,7 @@
                             </p:outputPanel>
                         </f:facet>
 
-                        <p:column width="130" style="text-align:center"
+                        <p:column width="70" style="text-align:center"
                                   headerText="#{msg['common.table.col-header.action']}">
                             <p:commandButton id="update"
                                              value="#{msg['common.dialog.header.prefixUpdate']}"
@@ -135,19 +134,19 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Mã căn hộ" sortBy="#{canHo.maCh}">
+                        <p:column width="80" headerText="Mã căn hộ" sortBy="#{canHo.maCh}" style="text-align: right">
                             <h:outputText value="#{canHo.maCh}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Tên căn hộ" sortBy="#{canHo.tenCanHo}">
+                        <p:column width="200" headerText="Tên căn hộ" sortBy="#{canHo.tenCanHo}">
                             <h:outputText value="#{canHo.tenCanHo}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Số tầng" sortBy="#{canHo.soTang}">
+                        <p:column width="100" headerText="Số tầng" sortBy="#{canHo.soTang}" style="text-align: right">
                             <h:outputText value="#{canHo.soTang}"/>
                         </p:column>
 
-                        <p:column width="100" headerText="Số phòng" sortBy="#{canHo.soPhong}">
+                        <p:column width="100" headerText="Số phòng" sortBy="#{canHo.soPhong}" style="text-align: right">
                             <h:outputText value="#{canHo.soPhong}"/>
                         </p:column>
                     </p:dataTable>

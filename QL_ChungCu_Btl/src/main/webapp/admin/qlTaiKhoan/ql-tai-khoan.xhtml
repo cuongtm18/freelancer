@@ -19,7 +19,8 @@
                         <p:outputLabel class="col-sm-2 col-md-2  control-label"
                                        value="Họ và tên:"/>
                         <div class="col-sm-4 col-md-4">
-                            <p:inputText styleClass="form-control" value="#{qlTaiKhoanController.taiKhoanEntity.fullName}"
+                            <p:inputText styleClass="form-control"
+                                         value="#{qlTaiKhoanController.taiKhoanEntity.fullName}"
                                          maxlength="50">
                             </p:inputText>
                         </div>
@@ -27,7 +28,8 @@
                         <p:outputLabel class="col-sm-2 col-md-2  control-label"
                                        value="Tên tài khoản:"/>
                         <div class="col-sm-4 col-md-4">
-                            <p:inputText styleClass="form-control" value="#{qlTaiKhoanController.taiKhoanEntity.userName}"
+                            <p:inputText styleClass="form-control"
+                                         value="#{qlTaiKhoanController.taiKhoanEntity.userName}"
                                          maxlength="20">
                             </p:inputText>
                         </div>
@@ -111,7 +113,7 @@
                     </div>
                     <div class="EmptyBox10"/>
                     <p:dataTable id="tblNhanVien" paginator="true" rows="10"
-                                 value="#{qlTaiKhoanController.list}" var="nhanVien" scrollable="true"
+                                 value="#{qlTaiKhoanController.list}" var="nhanVien"
                                  paginatorPosition="bottom" rowsPerPageTemplate="5,10,20"
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  emptyMessage="#{msg['datatable.label.notfound']}">
@@ -159,29 +161,29 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Họ và Tên" sortBy="#{nhanVien.fullName}">
+                        <p:column headerText="Họ và Tên" sortBy="#{nhanVien.fullName}">
                             <h:outputText value="#{nhanVien.fullName}"></h:outputText>
                         </p:column>
 
-                        <p:column width="150" style="text-align:left" headerText="Vai trò" sortBy="#{nhanVien.role}">
+                        <p:column style="text-align:left" headerText="Vai trò" sortBy="#{nhanVien.role}">
                             <h:outputText value="SuperAdmin" rendered="#{nhanVien.role == 1}"/>
                             <h:outputText value="Admin" rendered="#{nhanVien.role == 2}"/>
                             <h:outputText value="User" rendered="#{nhanVien.role == 3}"/>
                         </p:column>
 
-                        <p:column width="250" headerText="Tên tài khoản" sortBy="#{nhanVien.userName}">
+                        <p:column headerText="Tên tài khoản" sortBy="#{nhanVien.userName}">
                             <h:outputText value="#{nhanVien.userName}"></h:outputText>
                         </p:column>
 
-                        <p:column width="250" headerText="Email" sortBy="#{nhanVien.email}">
+                        <p:column headerText="Email" sortBy="#{nhanVien.email}">
                             <h:outputText value="#{nhanVien.email}"></h:outputText>
                         </p:column>
 
-                        <p:column width="100" headerText="Số điện thoại" sortBy="#{nhanVien.phone}">
+                        <p:column headerText="Số điện thoại" sortBy="#{nhanVien.phone}" style="text-align: right">
                             <h:outputText value="#{nhanVien.phone}"></h:outputText>
                         </p:column>
 
-                        <p:column width="150" headerText="Trạng thái" sortBy="#{nhanVien.status}">
+                        <p:column headerText="Trạng thái" sortBy="#{nhanVien.status}">
                             <h:outputText rendered="#{nhanVien.status == 1}"
                                           value="Đang hoạt động"/>
                             <h:outputText rendered="#{nhanVien.status == 0}"

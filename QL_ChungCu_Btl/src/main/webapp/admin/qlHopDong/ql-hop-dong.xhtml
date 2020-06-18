@@ -79,7 +79,7 @@
                     </div>
                     <div class="EmptyBox10"/>
                     <p:dataTable id="tblNhanVien" paginator="true" rows="10"
-                                 value="#{qlHopDongController.list}" var="hopDong" scrollable="true"
+                                 value="#{qlHopDongController.list}" var="hopDong"
                                  paginatorPosition="bottom" rowsPerPageTemplate="5,10,20"
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  emptyMessage="#{msg['datatable.label.notfound']}">
@@ -90,7 +90,7 @@
                             </p:outputPanel>
                         </f:facet>
 
-                        <p:column width="130" style="text-align:center"
+                        <p:column width="100" style="text-align:center"
                                   headerText="#{msg['common.table.col-header.action']}">
                             <p:commandButton id="update"
                                              value="#{msg['common.dialog.header.prefixUpdate']}"
@@ -126,7 +126,8 @@
 
                         </p:column>
 
-                        <p:column width="200" headerText="Mã hợp đồng" sortBy="#{hopDong.maHd}">
+                        <p:column width="80" headerText="Mã hợp đồng" sortBy="#{hopDong.maHd}"
+                                  style="text-align: right">
                             <h:outputText value="#{hopDong.maHd}"/>
                         </p:column>
 
@@ -151,8 +152,6 @@
                         <p:column width="200" headerText="Tình trạng thực tế" sortBy="#{hopDong.tinhTrangThucTe}">
                             <h:outputText value="#{hopDong.tinhTrangThucTe}"/>
                         </p:column>
-
-
                     </p:dataTable>
                 </p:outputPanel>
             </p:panel>
