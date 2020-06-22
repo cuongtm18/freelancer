@@ -1,42 +1,100 @@
-<!--<!DOCTYPE html>-->
+<!DOCTYPE html>
 
-<!--<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"-->
-<!--      xmlns:p="http://primefaces.org/ui"-->
-<!--      xmlns:h="http://java.sun.com/jsf/html"-->
-<!--      xmlns:f="http://java.sun.com/jsf/core">-->
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+>
 
-<!--<h:head>-->
-<!--    <title>Chung cư</title>-->
-<!--    <meta name="viewport"-->
-<!--          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>-->
-<!--    <h:outputStylesheet library="primefaces-omg"-->
-<!--                        name="css/bootstrap.min.css"/>-->
-<!--    <h:outputStylesheet library="primefaces-omg" name="css/layout.css"/>-->
-<!--</h:head>-->
+<h:head>
+    <title>Chung cư</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <h:outputStylesheet library="primefaces-omg"
+                        name="css/bootstrap.min.css"/>
+    <h:outputStylesheet library="primefaces-omg" name="css/layout.css"/>
+</h:head>
 
-<!--<h:body>-->
-<!--    <img src="resources/img/gioi-thieu-sunreal2.jpg" style="width: 100%;height: 350px;"></img>-->
-<!--    <div class="form-group" style="padding: 25px;background-color: #477261">-->
-<!--        <p:commandLink>-->
-<!--            <h:outputText style="font-size: 27px;margin-right: 60px;color: white;"-->
-<!--                          value="TRANG CHỦ"/>-->
-<!--        </p:commandLink>-->
-<!--        <p:commandLink>-->
-<!--            <h:outputText style="font-size: 27px;margin-right: 60px;color: white;"-->
-<!--                          value="GIỚI THIỆU"/>-->
-<!--        </p:commandLink>-->
-<!--        <p:commandLink>-->
-<!--            <h:outputText style="font-size: 27px;margin-right: 60px;color: white;"-->
-<!--                          value="DỰ ÁN"/>-->
-<!--        </p:commandLink>-->
-<!--        <p:commandLink>-->
-<!--            <h:outputText style="font-size: 27px;margin-right: 60px;color: white;"-->
-<!--                          value="TIN TỨC"/>-->
-<!--        </p:commandLink>-->
-<!--        <p:commandLink>-->
-<!--            <h:outputText style="font-size: 27px;margin-right: 60px;color: white;"-->
-<!--                          value="LIÊN HỆ"/>-->
-<!--        </p:commandLink>-->
-<!--    </div>-->
-<!--</h:body>-->
-<!--</html>-->
+<h:body>
+    <img src="resources/img/gioi-thieu-sunreal2.jpg" style="width: 100%;height: 560px;"></img>
+    <div class="form-group" style="padding: 25px;background-color: #477261">
+        <p:commandLink>
+            <h:outputText style="font-size: 27px; margin-right: 100px;color: white;"
+                          value="TRANG CHỦ"/>
+        </p:commandLink>
+        <p:commandLink>
+            <h:outputText style="font-size: 27px;margin-left: 175px;color: white;"
+                          value="GIỚI THIỆU"/>
+        </p:commandLink>
+        <p:commandLink>
+            <h:outputText style="font-size: 27px;margin-left: 175px;color: white;"
+                          value="DỰ ÁN"/>
+        </p:commandLink>
+        <p:commandLink>
+            <h:outputText style="font-size: 27px;margin-left: 175px;color: white;"
+                          value="TIN TỨC"/>
+        </p:commandLink>
+        <p:commandLink>
+            <h:outputText style="font-size: 27px;margin-left: 175px;color: white;"
+                          value="LIÊN HỆ"/>
+        </p:commandLink>
+
+    </div>
+
+    <style type="text/css">
+        .ui-scrollpanel p {
+            width: 500px;
+            font-size: 20px;
+        }
+    </style>
+
+    <p:panel footer="" style="margin-bottom:60px">
+        <h1 style="margin-right:100px">Sống Như Nghỉ Dưỡng</h1>
+
+        <h:panelGrid columns="2" cellpadding="10">
+            <img src="resources/img/img76.jpg" style="width: 300%;height: 50%;"></img>
+            <p:scrollPanel mode="native" style="width:500px;height:500px">
+                <p>Với địa thế nhìn ra 500 ha mặt nước hồ Đầm Vạc và sân Golf Heron Lake với 90ha</p>
+                <p>khoảng xanh thiên nhiên, tiểu khu Phú Gia dường như là điểm chạm cảm xúc của</p>
+                <p>quần thể khu đô thị Times Garden Vĩnh Yên Residences. Tiểu khu Phú Gia kiến tạo
+                    một nhịp sống hiện đại nơi tuyến đường Lý Nam Đế với các tiện ích đáp ứng mọi</p>
+                <p>nhu cầu của cuộc sống tiện nghi khép kín: các nhà hàng Á – Âu cao cấp, hiệu sách,
+                    siêu thị tiện lợi 24/7, phòng khám..</p>
+            </p:scrollPanel>
+        </h:panelGrid>
+    </p:panel>
+
+    <p:panel footer="" style="margin-bottom:60px">
+        <h1 style="margin-right:100px">Vị trí trung tâm, nâng tầm đẳng cấp
+        </h1>
+
+        <h:panelGrid columns="2" cellpadding="10">
+            <img src="resources/img/img76.jpg" style="width: 300%;height: 50%;"></img>
+            <p:scrollPanel mode="native" style="width:500px;height:500px">
+                <p>Với địa thế nhìn ra 500 ha mặt nước hồ Đầm Vạc và sân Golf Heron Lake với 90ha</p>
+                <p>khoảng xanh thiên nhiên, tiểu khu Phú Gia dường như là điểm chạm cảm xúc của</p>
+                <p>quần thể khu đô thị Times Garden Vĩnh Yên Residences. Tiểu khu Phú Gia kiến tạo
+                    một nhịp sống hiện đại nơi tuyến đường Lý Nam Đế với các tiện ích đáp ứng mọi</p>
+                <p>nhu cầu của cuộc sống tiện nghi khép kín: các nhà hàng Á – Âu cao cấp, hiệu sách,
+                    siêu thị tiện lợi 24/7, phòng khám..</p>
+            </p:scrollPanel>
+        </h:panelGrid>
+    </p:panel>
+
+    <p:panel footer="" style="margin-bottom:60px">
+        <h1 style="margin-right:100px">Hơi Thở Châu Âu</h1>
+
+        <h:panelGrid columns="2" cellpadding="10">
+            <img src="resources/img/img76.jpg" style="width: 300%;height: 50%;"></img>
+            <p:scrollPanel mode="native" style="width:500px;height:500px">
+                <p>Với địa thế nhìn ra 500 ha mặt nước hồ Đầm Vạc và sân Golf Heron Lake với 90ha</p>
+                <p>khoảng xanh thiên nhiên, tiểu khu Phú Gia dường như là điểm chạm cảm xúc của</p>
+                <p>quần thể khu đô thị Times Garden Vĩnh Yên Residences. Tiểu khu Phú Gia kiến tạo
+                    một nhịp sống hiện đại nơi tuyến đường Lý Nam Đế với các tiện ích đáp ứng mọi</p>
+                <p>nhu cầu của cuộc sống tiện nghi khép kín: các nhà hàng Á – Âu cao cấp, hiệu sách,
+                    siêu thị tiện lợi 24/7, phòng khám..</p>
+            </p:scrollPanel>
+        </h:panelGrid>
+    </p:panel>
+
+</h:body>
+</html>
