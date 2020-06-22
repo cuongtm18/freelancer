@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
-<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
->
+      xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-    <title>Chung cư</title>
+    <title>Chung Cư</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <h:outputStylesheet library="primefaces-omg"
@@ -14,11 +15,77 @@
     <h:outputStylesheet library="primefaces-omg" name="css/layout.css"/>
 </h:head>
 
-<h:body>
-    <img src="resources/img/gioi-thieu-sunreal2.jpg" style="width: 100%;height: 560px;"></img>
-    <div class="form-group" style="padding: 25px;background-color: #477261">
+<h:body style="background-color: #edffeb;">
+    <style type="text/css">
+        .ui-scrollpanel p {
+            width: 800px;
+            font-size: 30px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 30px !important;
+            font-weight: bold !important;
+            text-align: center;
+            -webkit-animation: my 2000ms infinite;
+            -moz-animation: my 2000ms infinite;
+            -o-animation: my 2000ms infinite;
+            animation: my 2000ms infinite;
+        }
+
+        @-webkit-keyframes my {
+            0% {
+                color: #01454e;
+            }
+            50% {
+                color: #1a3a9a;
+            }
+            100% {
+                color: #163d80;
+            }
+        }
+
+        @-moz-keyframes my {
+            0% {
+                color: #04216d;
+            }
+            50% {
+                color: #102e82;
+            }
+            100% {
+                color: #20658b;
+            }
+        }
+
+        @-o-keyframes my {
+            0% {
+                color: #0c376c;
+            }
+            50% {
+                color: #1337bd;
+            }
+            100% {
+                color: #114172;
+            }
+        }
+
+        @keyframes my {
+            0% {
+                color: #103e84;
+            }
+            50% {
+                color: #157499;
+            }
+            100% {
+                color: #1869a7;
+            }
+        }
+    </style>
+
+    <img src="resources/img/gioi-thieu-sunreal2.jpg" style="width: 100%;height: 500px;"></img>
+    <div class="form-group" style="padding: 20px;background-color: #477261">
         <p:commandLink>
-            <h:outputText style="font-size: 27px; margin-right: 100px;color: white;"
+            <h:outputText style="font-size: 27px; margin-left: 175px;color: white;"
                           value="TRANG CHỦ"/>
         </p:commandLink>
         <p:commandLink>
@@ -40,61 +107,147 @@
 
     </div>
 
-    <style type="text/css">
-        .ui-scrollpanel p {
-            width: 500px;
-            font-size: 20px;
-        }
-    </style>
-
-    <p:panel footer="" style="margin-bottom:60px">
-        <h1 style="margin-right:100px">Sống Như Nghỉ Dưỡng</h1>
+    <p:panel>
+        <h1>Sống Như Nghỉ Dưỡng</h1>
 
         <h:panelGrid columns="2" cellpadding="10">
-            <img src="resources/img/img76.jpg" style="width: 300%;height: 50%;"></img>
-            <p:scrollPanel mode="native" style="width:500px;height:500px">
-                <p>Với địa thế nhìn ra 500 ha mặt nước hồ Đầm Vạc và sân Golf Heron Lake với 90ha</p>
-                <p>khoảng xanh thiên nhiên, tiểu khu Phú Gia dường như là điểm chạm cảm xúc của</p>
-                <p>quần thể khu đô thị Times Garden Vĩnh Yên Residences. Tiểu khu Phú Gia kiến tạo
-                    một nhịp sống hiện đại nơi tuyến đường Lý Nam Đế với các tiện ích đáp ứng mọi</p>
-                <p>nhu cầu của cuộc sống tiện nghi khép kín: các nhà hàng Á – Âu cao cấp, hiệu sách,
+            <img src="resources/img/img76.jpg" style="width: 100%;height: 50%;"></img>
+            <p:scrollPanel mode="native" style="width: 800px">
+                <p>Với địa thế nhìn ra 500 ha mặt nước hồ Đầm Vạc và sân Golf Heron Lake với 90ha
+                    khoảng xanh thiên nhiên, tiểu khu Phú Gia dường như là điểm chạm cảm xúc của
+                    quần thể khu đô thị Times Garden Vĩnh Yên Residences. Tiểu khu Phú Gia kiến tạo
+                    một nhịp sống hiện đại nơi tuyến đường Lý Nam Đế với các tiện ích đáp ứng mọi
+                    nhu cầu của cuộc sống tiện nghi khép kín: các nhà hàng Á – Âu cao cấp, hiệu sách,
                     siêu thị tiện lợi 24/7, phòng khám..</p>
             </p:scrollPanel>
         </h:panelGrid>
     </p:panel>
 
-    <p:panel footer="" style="margin-bottom:60px">
-        <h1 style="margin-right:100px">Vị trí trung tâm, nâng tầm đẳng cấp
-        </h1>
+    <p:panel>
+        <h1>Vị trí trung tâm, nâng tầm đẳng cấp</h1>
 
         <h:panelGrid columns="2" cellpadding="10">
-            <img src="resources/img/img76.jpg" style="width: 300%;height: 50%;"></img>
-            <p:scrollPanel mode="native" style="width:500px;height:500px">
-                <p>Với địa thế nhìn ra 500 ha mặt nước hồ Đầm Vạc và sân Golf Heron Lake với 90ha</p>
-                <p>khoảng xanh thiên nhiên, tiểu khu Phú Gia dường như là điểm chạm cảm xúc của</p>
-                <p>quần thể khu đô thị Times Garden Vĩnh Yên Residences. Tiểu khu Phú Gia kiến tạo
-                    một nhịp sống hiện đại nơi tuyến đường Lý Nam Đế với các tiện ích đáp ứng mọi</p>
-                <p>nhu cầu của cuộc sống tiện nghi khép kín: các nhà hàng Á – Âu cao cấp, hiệu sách,
+            <img src="resources/img/img76.jpg" style="width: 100%;height: 50%;"></img>
+            <p:scrollPanel mode="native" style="width:800px">
+                <p>Với địa thế nhìn ra 500 ha mặt nước hồ Đầm Vạc và sân Golf Heron Lake với 90ha
+                    khoảng xanh thiên nhiên, tiểu khu Phú Gia dường như là điểm chạm cảm xúc của
+                    quần thể khu đô thị Times Garden Vĩnh Yên Residences. Tiểu khu Phú Gia kiến tạo
+                    một nhịp sống hiện đại nơi tuyến đường Lý Nam Đế với các tiện ích đáp ứng mọi
+                    nhu cầu của cuộc sống tiện nghi khép kín: các nhà hàng Á – Âu cao cấp, hiệu sách,
                     siêu thị tiện lợi 24/7, phòng khám..</p>
             </p:scrollPanel>
         </h:panelGrid>
     </p:panel>
 
-    <p:panel footer="" style="margin-bottom:60px">
-        <h1 style="margin-right:100px">Hơi Thở Châu Âu</h1>
+    <p:panel>
+        <h1>Hơi Thở Châu Âu</h1>
 
         <h:panelGrid columns="2" cellpadding="10">
-            <img src="resources/img/img76.jpg" style="width: 300%;height: 50%;"></img>
-            <p:scrollPanel mode="native" style="width:500px;height:500px">
-                <p>Với địa thế nhìn ra 500 ha mặt nước hồ Đầm Vạc và sân Golf Heron Lake với 90ha</p>
-                <p>khoảng xanh thiên nhiên, tiểu khu Phú Gia dường như là điểm chạm cảm xúc của</p>
-                <p>quần thể khu đô thị Times Garden Vĩnh Yên Residences. Tiểu khu Phú Gia kiến tạo
-                    một nhịp sống hiện đại nơi tuyến đường Lý Nam Đế với các tiện ích đáp ứng mọi</p>
-                <p>nhu cầu của cuộc sống tiện nghi khép kín: các nhà hàng Á – Âu cao cấp, hiệu sách,
+            <img src="resources/img/img76.jpg" style="width: 100%;height: 50%;"></img>
+            <p:scrollPanel mode="native" style="width:800px">
+                <p>Với địa thế nhìn ra 500 ha mặt nước hồ Đầm Vạc và sân Golf Heron Lake với 90ha
+                    khoảng xanh thiên nhiên, tiểu khu Phú Gia dường như là điểm chạm cảm xúc của
+                    quần thể khu đô thị Times Garden Vĩnh Yên Residences. Tiểu khu Phú Gia kiến tạo
+                    một nhịp sống hiện đại nơi tuyến đường Lý Nam Đế với các tiện ích đáp ứng mọi
+                    nhu cầu của cuộc sống tiện nghi khép kín: các nhà hàng Á – Âu cao cấp, hiệu sách,
                     siêu thị tiện lợi 24/7, phòng khám..</p>
             </p:scrollPanel>
         </h:panelGrid>
     </p:panel>
 
+    <!--Footer -->
+    <footer style="background-color: #477261 !important;position: absolute;width: 100%;font-size: 25px;">
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-4 mx-auto">
+
+                    <!-- Content -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4"
+                        style="color: white;font-size: 25px;">Quản Lý Chung Cư - Đại Học Thủ Đô</h5>
+                    <p style="color: white;font-size: 25px;">ĐẠI LÝ PHÂN PHỐI ĐỘC QUYỀN DỰ ÁN CHUNG CƯ ĐẠI HỌC THỦ ĐÔ</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 mx-auto">
+
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4"
+                        style="color: white;font-size: 25px;">CHUNG CƯ</h5>
+
+                    <ul class="list-unstyled" style="color: white">
+                        <li>
+                            <a style="color: white"
+                               href="https://anphatland.com.vn/anland-complex-2/"> Anland Primeum Nam Cường</a>
+                        </li>
+                        <li>
+                            <a style="color: white"
+                               href="https://anphatland.com.vn/anland-complex/"> Anland Complex Nam Cường</a>
+                        </li>
+                        <li>
+                            <a style="color: white" href="https://anphatland.com.vn/metropolis/">Vinhomes Metropolis</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4"
+                        style="color: white;font-size: 25px;">LIÊN HỆ</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fa fa-map-marker" style="margin-right: 10px;color: white">
+                                ĐỊA CHỈ: 98 phố Dương Quảng Hàm, Quan Hoa, Cầu Giấy, Hà Nội
+                            </i>
+                        </li>
+                        <li>
+                            <i class="fa fa-phone" style="margin-right: 10px;color: white"> 024 3833 0708</i>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Social buttons -->
+        <ul class="list-unstyled list-inline text-center" style="font-size: 50px;">
+            <li class="list-inline-item">
+                <a class="btn-floating btn-fb mx-1">
+                    <i class="fa fa-facebook-official" style="color: white"> </i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a class="btn-floating btn-gplus mx-1">
+                    <i class="fa fa-google-plus" style="color: white"> </i>
+                </a>
+            </li>
+        </ul>
+        <!-- Social buttons -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3" style="color: white">© 2020 Copyright:
+            <a href="#" style="color: white"> Đại Học Thủ Đô</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!--Footer -->
 </h:body>
 </html>
