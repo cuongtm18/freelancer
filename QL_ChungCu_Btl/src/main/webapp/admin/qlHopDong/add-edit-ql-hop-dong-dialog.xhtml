@@ -60,14 +60,14 @@
                     <div class="text-center">
                         <p:commandButton value="Thêm mới" icon="fa fa-plus"
                                          actionListener="#{qlHopDongController.onInsert()}"
-                                         rendered="#{qlHopDongController.flag eq 1}" update="frmMain:tblNhanVien">
+                                         rendered="#{qlHopDongController.flag eq 1}" update="frmMain:tblHopdong">
                         </p:commandButton>
 
                         <p:commandButton id="btnUpdate" process="@form"
                                          value="#{msg['common.button.label.update']}"
                                          icon="fa fa-fw fa-edit"
                                          actionListener="#{qlHopDongController.onComfirmUpdate()}"
-                                         update="frmMain:tblNhanVien" rendered="#{qlHopDongController.flag eq 2}">
+                                         update="frmMain:tblHopdong" rendered="#{qlHopDongController.flag eq 2}">
                         </p:commandButton>
 
                         <p:commandButton id="btnClose" type="button"

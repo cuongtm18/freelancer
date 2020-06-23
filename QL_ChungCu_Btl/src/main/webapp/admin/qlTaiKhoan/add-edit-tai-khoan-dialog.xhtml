@@ -122,14 +122,14 @@
                     <div class="text-center">
                         <p:commandButton value="Thêm mới" icon="fa fa-plus"
                                          actionListener="#{qlTaiKhoanController.onInsert()}"
-                                         rendered="#{qlTaiKhoanController.flag eq 1}" update="frmMain:tblNhanVien">
+                                         rendered="#{qlTaiKhoanController.flag eq 1}" update="frmMain:tblTaikhoan">
                         </p:commandButton>
 
                         <p:commandButton id="btnUpdate" process="@form"
                                          value="#{msg['common.button.label.update']}"
                                          icon="fa fa-fw fa-edit"
                                          actionListener="#{qlTaiKhoanController.onComfirmUpdate()}"
-                                         update="frmMain:tblNhanVien" rendered="#{qlTaiKhoanController.flag eq 2}">
+                                         update="frmMain:tblTaikhoan" rendered="#{qlTaiKhoanController.flag eq 2}">
                         </p:commandButton>
 
                         <p:commandButton id="btnClose" type="button"

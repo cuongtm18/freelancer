@@ -76,14 +76,14 @@
                         <p:commandButton value="Thêm mới" icon="fa fa-plus"
                                          actionListener="#{qlKhachHangController.onInsert()}"
                                          rendered="#{qlKhachHangController.flag eq 1}"
-                                         update="frmMain:tblNhanVien">
+                                         update="frmMain:tblKhachhang">
                         </p:commandButton>
 
                         <p:commandButton id="btnUpdate" process="@form"
                                          value="#{msg['common.button.label.update']}"
                                          icon="fa fa-fw fa-edit"
                                          actionListener="#{qlKhachHangController.onComfirmUpdate()}"
-                                         update="frmMain:tblNhanVien"
+                                         update="frmMain:tblKhachhang"
                                          rendered="#{qlKhachHangController.flag eq 2}">
                         </p:commandButton>
 

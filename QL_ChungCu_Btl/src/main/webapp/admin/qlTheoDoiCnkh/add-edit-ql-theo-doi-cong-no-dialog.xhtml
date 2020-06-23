@@ -27,14 +27,14 @@
                         <p:commandButton value="Thêm mới" icon="fa fa-plus"
                                          actionListener="#{qlTheoDoiCongNoKhController.onInsert()}"
                                          rendered="#{qlTheoDoiCongNoKhController.flag eq 1}"
-                                         update="frmMain:tblNhanVien">
+                                         update="frmMain:tblCongno">
                         </p:commandButton>
 
                         <p:commandButton id="btnUpdate" process="@form"
                                          value="#{msg['common.button.label.update']}"
                                          icon="fa fa-fw fa-edit"
                                          actionListener="#{qlTheoDoiCongNoKhController.onComfirmUpdate()}"
-                                         update="frmMain:tblNhanVien"
+                                         update="frmMain:tblCongno"
                                          rendered="#{qlTheoDoiCongNoKhController.flag eq 2}">
                         </p:commandButton>
 

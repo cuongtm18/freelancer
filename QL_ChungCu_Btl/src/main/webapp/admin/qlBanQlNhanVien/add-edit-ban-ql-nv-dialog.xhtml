@@ -40,14 +40,14 @@
                     <div class="text-center">
                         <p:commandButton value="Thêm mới" icon="fa fa-plus"
                                          actionListener="#{qlNhanVienController.onInsert()}"
-                                         rendered="#{qlNhanVienController.flag eq 1}" update="frmMain:tblNhanVien">
+                                         rendered="#{qlNhanVienController.flag eq 1}" update="frmMain:tblBanQlNhanVien">
                         </p:commandButton>
 
                         <p:commandButton id="btnUpdate" process="@form"
                                          value="#{msg['common.button.label.update']}"
                                          icon="fa fa-fw fa-edit"
                                          actionListener="#{qlNhanVienController.onComfirmUpdate()}"
-                                         update="frmMain:tblNhanVien" rendered="#{qlNhanVienController.flag eq 2}">
+                                         update="frmMain:tblBanQlNhanVien" rendered="#{qlNhanVienController.flag eq 2}">
                         </p:commandButton>
 
                         <p:commandButton id="btnClose" type="button"
